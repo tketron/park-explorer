@@ -2,15 +2,15 @@ const express = require('express');
 const cors = require('cors');
 const path = require('path');
 
+const themeparkRoutes = require('./routes/themeparks');
+
 const app = express();
 
 app.use(cors());
 // Serve static files from the React frontend app
 app.use(express.static(path.join(__dirname, '../../build')));
-
-app.get('/hello', (req, res) => {
-  res.send('Hello World');
-});
+// Routes
+app.use('/themeparks', themeparkRoutes);
 
 // Anything that doesn't match the above, send back index.html
 app.get('/', (req, res) => {
