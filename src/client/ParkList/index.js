@@ -22,7 +22,7 @@ class ParkList extends React.Component {
         <h1>Parks List</h1>
         <ul>
           {this.state.parks.map(park => {
-            return <li>{park}</li>;
+            return <li>{park.name}</li>;
           })}
         </ul>
       </div>
