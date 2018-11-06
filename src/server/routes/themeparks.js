@@ -19,6 +19,19 @@ router.get('/all', (req, res) => {
   res.json(parksNames);
 });
 
-router.get('/:park', (req, res) => {});
+router.get('/:park/waittimes', (req, res) => {
+  const park = new Themeparks.Parks[req.params.park]();
+
+  park
+    .GetWaitTimes()
+    .then(rides => {
+      // print each wait time
+      res.json(rides);
+      // for (var i = 0, ride; (ride = rides[i++]); ) {
+      //   console.log(ride.name + ': ' + ride.waitTime + ' minutes wait');
+      // }
+    })
+    .catch(err => console.error(err));
+});
 
 module.exports = router;
