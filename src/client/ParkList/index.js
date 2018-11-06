@@ -1,6 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 
+import ParkListItem from '../ParkListItem';
+
 class ParkList extends React.Component {
   constructor(props) {
     super(props);
@@ -10,7 +12,7 @@ class ParkList extends React.Component {
   }
 
   async componentDidMount() {
-    const parksList = await axios.get('/themeparks/names');
+    const parksList = await axios.get('/themeparks/all');
     this.setState({
       parks: parksList.data
     });
@@ -21,8 +23,8 @@ class ParkList extends React.Component {
       <div>
         <h1>Parks List</h1>
         <ul>
-          {this.state.parks.map(park => {
-            return <li>{park.name}</li>;
+          {this.state.parks.map((park, idx) => {
+            return <ParkListItem key={idx} name={park.name} />;
           })}
         </ul>
       </div>

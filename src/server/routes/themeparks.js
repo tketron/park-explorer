@@ -3,7 +3,7 @@ const router = express.Router();
 
 const Themeparks = require('themeparks');
 
-router.get('/names', (req, res) => {
+router.get('/all', (req, res) => {
   const parksNames = [];
   for (const park in Themeparks.Parks) {
     parksNames.push({ park: park, name: new Themeparks.Parks[park]().Name });
