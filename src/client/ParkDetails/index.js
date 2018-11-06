@@ -4,14 +4,16 @@ class ParkDetails extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      park: props.park
+      parkObject: null
     };
   }
+
+  componentDidMount() {}
 
   render() {
     return (
       <div>
-        <p>{this.state.park}</p>
+        <p>{this.props.park}</p>
       </div>
     );
   }

@@ -20,7 +20,7 @@ class App extends Component {
     return (
       <div className="App">
         <ParkList onUpdatePark={this.updateCurrentPark} />
-        <ParkDetails />
+        <ParkDetails park={this.state.currentPark} />
       </div>
     );
   }
