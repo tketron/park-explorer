@@ -7,8 +7,7 @@ class ParkList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      parks: [],
-      currentPark: null
+      parks: []
     };
   }
 
@@ -18,10 +17,6 @@ class ParkList extends React.Component {
       parks: parksList.data
     });
   }
-
-  updateCurrentPark = park => {
-    this.setState({ currentPark: park });
-  };
 
   render() {
     return (
@@ -33,12 +28,11 @@ class ParkList extends React.Component {
               <ParkListItem
                 key={idx}
                 name={park.name}
-                onClick={() => this.updateCurrentPark(park.park)}
+                onClick={() => this.props.onUpdatePark(park.park)}
               />
             );
           })}
         </div>
-        <p>{this.state.currentPark}</p>
       </div>
     );
   }
