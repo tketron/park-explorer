@@ -28,7 +28,7 @@ class ParkList extends React.Component {
               <ParkListItem
                 key={idx}
                 name={park.name}
-                onClick={() => this.props.onUpdatePark(park.park)}
+                onClick={() => this.props.onUpdatePark(park)}
               />
             );
           })}

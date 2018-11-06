@@ -13,7 +13,7 @@ class ParkDetails extends React.Component {
   render() {
     return (
       <div>
-        <p>{this.props.park}</p>
+        <p>{this.props.park.name}</p>
       </div>
     );
   }
