@@ -7,7 +7,8 @@ class ParkList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      parks: []
+      parks: [],
+      currentPark: null
     };
   }
 
@@ -18,15 +19,26 @@ class ParkList extends React.Component {
     });
   }
 
+  updateCurrentPark = park => {
+    this.setState({ currentPark: park });
+  };
+
   render() {
     return (
       <div>
-        <h1>Parks List</h1>
-        <ul>
+        <div>
+          <h1>Parks List</h1>
           {this.state.parks.map((park, idx) => {
-            return <ParkListItem key={idx} name={park.name} />;
+            return (
+              <ParkListItem
+                key={idx}
+                name={park.name}
+                onClick={() => this.updateCurrentPark(park.park)}
+              />
+            );
           })}
-        </ul>
+        </div>
+        <p>{this.state.currentPark}</p>
       </div>
     );
   }
