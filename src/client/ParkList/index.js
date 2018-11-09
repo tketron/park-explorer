@@ -24,25 +24,16 @@ class ParkList extends React.Component {
 
   render() {
     return (
-      <div>
-        <div>
-          <List>
-            <h1>Parks List</h1>
-            {this.state.parks.map((park, idx) => {
-              return (
-                // <ParkListItem
-                //   key={idx}
-                //   name={park.name}
-                //   onClick={() => this.props.onUpdatePark(park)}
-                // />
-                <ListItem button onClick={() => this.props.onUpdatePark(park)}>
-                  <ListItemText primary={park.name} />
-                </ListItem>
-              );
-            })}
-          </List>
-        </div>
-      </div>
+      <List>
+        <h1>Parks List</h1>
+        {this.state.parks.map((park, idx) => {
+          return (
+            <ListItem button onClick={() => this.props.onUpdatePark(park)}>
+              <ListItemText primary={park.name} />
+            </ListItem>
+          );
+        })}
+      </List>
     );
   }
 }

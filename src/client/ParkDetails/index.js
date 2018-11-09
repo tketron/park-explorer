@@ -10,14 +10,15 @@ class ParkDetails extends React.Component {
   }
 
   async componentDidMount() {
-    const waitTimes = await axios.get(
-      `/themeparks/${this.props.park.park}/waittimes`
-    );
-    this.setState({ rideWaitTimes: waitTimes.data });
+    if (this.props.park !== null) {
+      const waitTimes = await axios.get(
+        `/themeparks/${this.props.park.park}/waittimes`
+      );
+      this.setState({ rideWaitTimes: waitTimes.data });
+    }
   }
 
   async componentDidUpdate(prevProps) {
-    // Typical usage (don't forget to compare props):
     if (this.props.park.name !== prevProps.park.name) {
       this.setState({ rideWaitTimes: [] });
       const waitTimes = await axios.get(
@@ -30,7 +31,7 @@ class ParkDetails extends React.Component {
   render() {
     return (
       <div>
-        <p>{this.props.park.name}</p>
+        {this.props.park && <p>{this.props.park.name}</p>}
         <div>
           {this.state.rideWaitTimes.map(ride => {
             return (

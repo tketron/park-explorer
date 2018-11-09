@@ -14,7 +14,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentPark: null,
+      currentPark: { park: '' },
       open: true
     };
   }
@@ -53,9 +53,7 @@ class App extends Component {
           </div>
           <ParkList onUpdatePark={this.updateCurrentPark} />
         </Drawer>
-        {this.state.currentPark && (
-          <ParkDetails park={this.state.currentPark} />
-        )}
+        <ParkDetails park={this.state.currentPark} />
       </div>
     );
   }
