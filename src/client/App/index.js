@@ -9,6 +9,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 
 import ParkList from '../ParkList';
 import ParkDetails from '../ParkDetails';
+import ParkMap from '../ParkMap';
 
 class App extends Component {
   constructor(props) {
@@ -53,7 +54,10 @@ class App extends Component {
           </div>
           <ParkList onUpdatePark={this.updateCurrentPark} />
         </Drawer>
-        <ParkDetails park={this.state.currentPark} />
+        <div className="App-contents">
+          <ParkDetails park={this.state.currentPark} />
+          <ParkMap park={this.state.currentPark} />
+        </div>
       </div>
     );
   }
