@@ -11,7 +11,10 @@ router.get('/all', (req, res) => {
       park: park,
       name: currentPark.Name,
       timezone: currentPark.Timezone,
-      location: currentPark.Location.toString(),
+      location: {
+        longitude: currentPark.Location.LongitudeRaw,
+        latitude: currentPark.Location.LatitudeRaw
+      },
       timeNow: currentPark.TimeNow,
       dateNow: currentPark.DateNow
     });
@@ -25,11 +28,7 @@ router.get('/:park/waittimes', (req, res) => {
   park
     .GetWaitTimes()
     .then(rides => {
-      // print each wait time
       res.json(rides);
-      // for (var i = 0, ride; (ride = rides[i++]); ) {
-      //   console.log(ride.name + ': ' + ride.waitTime + ' minutes wait');
-      // }
     })
     .catch(err => console.error(err));
 });
