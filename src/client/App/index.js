@@ -55,8 +55,8 @@ class App extends Component {
           <ParkList onUpdatePark={this.updateCurrentPark} />
         </Drawer>
         <div className="App-contents">
-          <ParkDetails park={this.state.currentPark} />
           <ParkMap park={this.state.currentPark} />
+          <ParkDetails park={this.state.currentPark} />
         </div>
       </div>
     );
