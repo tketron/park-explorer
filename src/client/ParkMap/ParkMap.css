@@ -1,0 +1,4 @@
+/* Default class name provided by react-leaflet */
+.leaflet-container {
+  height: 600px;
+}

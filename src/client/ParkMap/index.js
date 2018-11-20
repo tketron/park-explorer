@@ -1,7 +1,10 @@
 import React from 'react';
 import ReactMapGL from 'react-map-gl';
+import { Map, TileLayer } from 'react-leaflet';
 
-class Map extends React.Component {
+import './ParkMap.css';
+
+class ParkMap extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -10,7 +13,7 @@ class Map extends React.Component {
         height: 600,
         latitude: 37.7577,
         longitude: -122.4376,
-        zoom: 15
+        zoom: 17
       }
     };
   }
@@ -23,7 +26,7 @@ class Map extends React.Component {
           height: 600,
           latitude: this.props.park.location.latitude,
           longitude: this.props.park.location.longitude,
-          zoom: 15
+          zoom: 17
         }
       });
     }
@@ -31,17 +34,26 @@ class Map extends React.Component {
 
   render() {
     return (
-      <div className="Map-wrapper">
-        <ReactMapGL
-          {...this.state.viewport}
-          mapStyle="mapbox://styles/mapbox/dark-v9"
-          onViewportChange={viewport => this.setState({ viewport })}
-          width="100%"
-          heigth="100%"
+      // <div className="Map-wrapper">
+      <Map
+        center={[this.state.viewport.latitude, this.state.viewport.longitude]}
+        zoom={this.state.viewport.zoom}
+      >
+        <TileLayer
+          attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-      </div>
+      </Map>
+      // <ReactMapGL
+      //   {...this.state.viewport}
+      //   mapStyle="mapbox://styles/mapbox/dark-v9"
+      //   onViewportChange={viewport => this.setState({ viewport })}
+      //   width="100%"
+      //   heigth="100%"
+      // />
+      // </div>
     );
   }
 }
 
-export default Map;
+export default ParkMap;
